@@ -20,7 +20,7 @@ wekandb:
     - 27017
 
 wekan:
-  image: mquandalle/wekan
+  image: wykeith/cp2m 
   links:
     - wekandb
   environment:
