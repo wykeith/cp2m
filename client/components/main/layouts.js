@@ -1,4 +1,6 @@
 Meteor.subscribe('boards');
+Meteor.subscribe('mylists');
+Meteor.subscribe('Cards')
 
 BlazeLayout.setRoot('body');
 
@@ -42,5 +44,43 @@ Template.userFormsLayout.events({
 Template.defaultLayout.events({
   'click .js-close-modal': () => {
     Modal.close();
+  },
+});
+
+Template.feedbackform.helpers({
+  listitem: function(){
+      return Lists.find({"title" : {$regex : ".*#.*"}});
+  }
+});
+
+Template.feedbackform.events({
+  'click .js-askqn': () => {
+    boardid = Lists.findOne(
+      $('.js-select-list').val(),
+      {fields: {boardId: 1}}
+      );
+
+    $('.js-errors').text("Submitting Your Question");
+    
+    Cards.insert( {
+      "title" : $('.js-questions').val(),
+      "listId" : $('.js-select-list').val(),
+      "boardId" : boardid.boardId,
+      "archived" : false,
+      "userId" : "Public",
+      "sort" : 100
+      },
+      function( error, result) { 
+        if ( error ) { 
+          $('.js-errors').text("Could not submit due to " + error);
+        };
+        if ( result ) {
+          $('.js-errors').text('Thank you for your Question');
+          $('.js-questions').val('');
+          delete result; 
+        };
+      }
+    );
+    
   },
 });

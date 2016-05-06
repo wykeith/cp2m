@@ -33,7 +33,6 @@ service-configuration
 useraccounts:core
 useraccounts:unstyled
 useraccounts:flow-routing
-email
 
 # Utilities
 check

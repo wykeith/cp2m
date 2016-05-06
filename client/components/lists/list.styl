@@ -1,5 +1,49 @@
 @import 'nib'
 
+.publiclist
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  flex: 0 0 100%
+  position: relative
+  // Even if this background color is the same as the body we can't leave it
+  // transparent, because that won't work during a list drag.
+  background: darken(white, 13%)
+  height: 100%
+  border-left: 1px solid darken(white, 20%)
+  padding: 0
+  float: left
+
+  &:first-child
+    margin-left: 5px
+    border-left: none
+
+  .card-details + &
+    border-left: none
+
+  &.ui-sortable-helper
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, .3),
+                0 0 1px rgba(0, 0, 0, .5)
+    transform: rotate(4deg)
+    cursor: grabbing
+
+    .list-header.ui-sortable-handle
+      cursor: grabbing
+
+  &.placeholder
+    background-color: rgba(0, 0, 0, .2)
+    border-color: transparent
+    box-shadow: none
+    height: 100px
+
+  &.list-composer, & .list-composer
+    .open-list-composer
+      color: #8c8c8c
+
+    .list-name-input
+      background: white
+      margin: -3px 0 8px
+
 .list
   box-sizing: border-box
   display: flex
@@ -55,7 +99,7 @@
 
   .list-header-name
     display: inline
-    font-size: 16px
+    font-size: 20px
     line-height: 17px
     margin: 0
     font-weight: bold

@@ -54,8 +54,12 @@ Cards.attachSchema(new SimpleSchema({
 }));
 
 Cards.allow({
-  insert(userId, doc) {
-    return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+  // insert(userId, doc) {
+  //   return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+  // },
+  // Very Permissive hack to allow public to insert cards into all the lists on the board
+  insert() {
+    return true;
   },
   update(userId, doc) {
     return allowIsBoardMember(userId, Boards.findOne(doc.boardId));

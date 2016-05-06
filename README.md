@@ -1,7 +1,5 @@
 # Wekan
 
-[![Join the chat][gitter_badge]][gitter_chat]
-
 Wekan is an open-source and collaborative kanban board application.
 
 Whether you’re maintaining a personal todo list, planning your holidays with
@@ -21,26 +19,10 @@ install Wekan on your own computer or server. In fact we encourage you to do
 that by providing one-click installation on Heroku or [Sandstorm]
 [sandstorm_market] platforms and verified [Docker][docker_image] images.
 
-[![Deploy][heroku_button]][heroku_deploy]
-
-[![SignUp][indiehosters_button]][indiehosters_saas]
-
-[![Deploy to Scalingo][scalingo_button]][scalingo_deploy]
-
-Wekan is released under the very permissive [MIT license](LICENSE), and made
-with [Meteor](https://www.meteor.com).
-
-[Our roadmap is self-hosted on Wekan][roadmap]
-
 [screenshot]: http://i.imgur.com/cI4jW2h.png
 [gitter_badge]: https://badges.gitter.im/Join%20Chat.svg
 [gitter_chat]: https://gitter.im/wekan/wekan
 [roadmap]: http://try.wekan.io/b/MeSsFJaSqeuo9M6bs/wekan-roadmap
 [sandstorm_market]: https://oasis.sandstorm.io/appdemo/m86q05rdvj14yvn78ghaxynqz7u2svw6rnttptxx49g1785cdv1h
 [docker_image]: https://hub.docker.com/r/mquandalle/wekan/
-[heroku_button]: https://www.herokucdn.com/deploy/button.png
-[heroku_deploy]: https://heroku.com/deploy?template=https://github.com/wekan/wekan/tree/master
-[indiehosters_button]: https://indie.host/signup.png
-[indiehosters_saas]: https://indiehosters.net/shop/product/wekan-20
-[scalingo_button]: https://cdn.scalingo.com/deploy/button.svg
-[scalingo_deploy]: https://my.scalingo.com/deploy?source=https://github.com/wekan/wekan#master
+

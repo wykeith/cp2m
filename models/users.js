@@ -314,25 +314,5 @@ if (Meteor.isServer) {
       permission: 'private',
     };
 
-    // Insert the Welcome Board
-    Boards.insert(ExampleBoard, (err, boardId) => {
-
-      ['Basics', 'Advanced'].forEach((title) => {
-        const list = {
-          title,
-          boardId,
-          userId: ExampleBoard.userId,
-
-          // XXX Not certain this is a bug, but we except these fields get
-          // inserted by the Lists.before.insert collection-hook. Since this
-          // hook is not called in this case, we have to dublicate the logic and
-          // set them here.
-          archived: false,
-          createdAt: new Date(),
-        };
-
-        Lists.insert(list);
-      });
-    });
   });
 }

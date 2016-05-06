@@ -8,10 +8,23 @@ head
     packages.
   link(rel="shortcut icon" href="/wekan-favicon.png")
 
+template(name="feedbackform")
+  section.auth-layout
+    section.auth-dialog
+      img.at-cp2m-logo(src="{{pathFor '/big_cp2m.png'}}" alt="CP2M")
+      div.at-form-board
+        select.js-select-list
+          each listitem
+            option(value="{{_id}}") {{title}}
+            //input(type="hidden" value="{{_id}}")
+        textarea.js-questions
+        input.primary.wide.js-askqn(type="submit" value="{{_ 'Submit Question'}}")
+      h2.js-errors
+
 template(name="userFormsLayout")
   section.auth-layout
     h1.at-form-landing-logo
-      img(src="{{pathFor '/wekan-logo.png'}}" alt="Wekan")
+      img(src="{{pathFor '/big_cp2m.png'}}" alt="Wekan")
     section.auth-dialog
       +Template.dynamic(template=content)
       div.at-form-lang

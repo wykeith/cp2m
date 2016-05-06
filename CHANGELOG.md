@@ -122,8 +122,13 @@ the popover was new). New features includes:
 * Assign and unassign members to cards;
 * Archive cards (though restoration is not yet possible);
 * Board stars;
+<<<<<<< HEAD
 * Markdown and emoji support in comments and card description;
 * Emoji auto-completion in the text editor;
+=======
+* Markdown and emojies support in comments and card description;
+* Emojies auto-completion in the text editor;
+>>>>>>> 90e6dfad0681181c42758d3cea7e8845d45d5451
 * Some keyboard shortcuts (eg `Ctrl`+`Enter` to submit a multi-line input).
 
 We also introduced basic support for the [Sandstorm](https://sandstorm.io)
