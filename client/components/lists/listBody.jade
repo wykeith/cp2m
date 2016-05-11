@@ -1,3 +1,18 @@
+template(name="publiclistBody")
+  .list-body.js-perfect-scrollbar
+    .minicards.clearfix.js-minicards
+      if cards.count
+        +inlinedForm(autoclose=false position="top")
+          +addCardForm(listId=_id position="top")
+      each cards
+        minicard-wrapper.js-minicard(
+          class="{{#if cardIsSelected}}is-selected{{/if}}"
+          class="{{#if MultiSelection.isSelected _id}}is-checked{{/if}}")
+          if MultiSelection.isActive
+            .materialCheckBox.multi-selection-checkbox.js-toggle-multi-selection(
+              class="{{#if MultiSelection.isSelected _id}}is-checked{{/if}}")
+          +publicminicard(this)
+
 template(name="listBody")
   .list-body.js-perfect-scrollbar
     .minicards.clearfix.js-minicards
