@@ -5,7 +5,7 @@ template(name="publiclistBody")
         +inlinedForm(autoclose=false position="top")
           +addCardForm(listId=_id position="top")
       each cards
-        minicard-wrapper.js-minicard(
+        a.minicard-wrapper.js-minicard(
           class="{{#if cardIsSelected}}is-selected{{/if}}"
           class="{{#if MultiSelection.isSelected _id}}is-checked{{/if}}")
           if MultiSelection.isActive
