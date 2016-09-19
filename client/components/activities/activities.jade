@@ -118,6 +118,7 @@ template(name="cardActivities")
               button.primary(type="submit") {{_ 'edit'}}
           else
             .activity-comment
+              +memberName(userId=comment.userId)
               +viewer
                 = comment.text
             span(title=createdAt).activity-meta {{ moment createdAt }}
@@ -125,6 +126,8 @@ template(name="cardActivities")
                 = ' - '
                 a.js-open-inlined-form {{_ "edit"}}
                 = ' - '
+                a.js-delete-comment {{_ "delete"}}
+              else
                 a.js-delete-comment {{_ "delete"}}
 
         else
