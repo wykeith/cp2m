@@ -132,23 +132,24 @@ template(name="cardActivities")
 
 template(name="othercardActivities")
   each currentCard.activities
-    .activity
-      +userAvatar(userId=user._id)
-      p.activity-desc
-        +memberName(user=user)
-        if($eq activityType 'addComment')
-          +inlinedForm(classNames='js-edit-comment')
-            +editor(autofocus=true)
-              = comment.text
-            .edit-controls
-              button.primary(type="submit") {{_ 'edit'}}
-          else
-            .activity-comment
-              +viewer
+    if($eq activityType 'addComment')
+      .activity
+        +userAvatar(userId=user._id)
+        p.activity-desc
+          +memberName(user=user)
+          if($eq activityType 'addComment')
+            +inlinedForm(classNames='js-edit-comment')
+              +editor(autofocus=true)
                 = comment.text
+              .edit-controls
+                button.primary(type="submit") {{_ 'edit'}}
+            else
+              .activity-comment
+                +viewer
+                  = comment.text
+              span(title=createdAt).activity-meta {{ moment createdAt }}
+                if ($eq currentUser._id comment.userId)
+                  = ' - '
+                  a.js-delete-comment {{_ "delete"}}
+          else
             span(title=createdAt).activity-meta {{ moment createdAt }}
-              if ($eq currentUser._id comment.userId)
-                = ' - '
-                a.js-delete-comment {{_ "delete"}}
-        else
-          span(title=createdAt).activity-meta {{ moment createdAt }}
