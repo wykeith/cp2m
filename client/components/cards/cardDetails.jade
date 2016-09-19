@@ -36,7 +36,7 @@ template(name="cardDetails")
             i.fa.fa-plus
 
     //- XXX We should use "editable" to avoid repetiting ourselves
-    if currentUser
+    if currentUser.isBoardMember
       h3.card-details-item-title {{_ 'description'}}
       +inlinedCardDescription(classNames="card-description js-card-description")
         +editor(autofocus=true)
@@ -71,7 +71,7 @@ template(name="cardDetails")
 
     hr
     h2 {{ _ 'activity'}}
-    if currentUser.isBoardMember
+    if currentUser
       +commentForm
     if isLoaded.get
       +activities(card=this mode="card")
