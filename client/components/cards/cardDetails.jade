@@ -36,7 +36,7 @@ template(name="cardDetails")
             i.fa.fa-plus
 
     //- XXX We should use "editable" to avoid repetiting ourselves
-    if currentUser.isBoardMember
+    if currentUser
       h3.card-details-item-title {{_ 'description'}}
       +inlinedCardDescription(classNames="card-description js-card-description")
         +editor(autofocus=true)
