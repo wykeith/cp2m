@@ -5,8 +5,10 @@ template(name='list')
         +listBody
     else
       .publiclist.js-list(id="js-list-{{_id}}")
-        if this.sort
+        if currentUser
           +publiclistHeader
+          +publiclistBody
+        else if this.sort  
         else
           +publiclistHeader
           +publiclistBody
