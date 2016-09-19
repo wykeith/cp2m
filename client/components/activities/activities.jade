@@ -7,6 +7,11 @@ template(name="activities")
         +boardActivities
       else
         +cardActivities
+    if currentUser
+      if $eq mode "board"
+        .span
+      else
+        +cardActivities
 
 template(name="boardActivities")
   each currentBoard.activities
