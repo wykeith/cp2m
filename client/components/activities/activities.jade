@@ -133,12 +133,11 @@ template(name="cardActivities")
 
 template(name="othercardActivities")
   each currentCard.activities
-    .activity
-      +userAvatar(userId=user._id)
-      p.activity-desc
-        +memberName(user=user)
-  
-        if($eq activityType 'addComment')
+    if($eq activityType 'addComment')
+      .activity
+        +userAvatar(userId=user._id)
+        p.activity-desc
+          +memberName(user=user)
           if($eq activityType 'addComment')
             +inlinedForm(classNames='js-edit-comment')
               +editor(autofocus=true)
