@@ -7,7 +7,7 @@ template(name="activities")
         +boardActivities
       else
         +cardActivities
-    if currentUser
+    else
       if $eq mode "board"
         .span
       else
@@ -19,7 +19,7 @@ template(name="boardActivities")
       +userAvatar(userId=user._id)
       p.activity-desc
         +memberName(user=user)
-
+        
         if($eq activityType 'addAttachment')
           | {{{_ 'activity-attached' attachmentLink cardLink}}}.
 
@@ -85,6 +85,7 @@ template(name="cardActivities")
       +userAvatar(userId=user._id)
       p.activity-desc
         +memberName(user=user)
+      
         if($eq activityType 'createCard')
           | {{_ 'activity-added' cardLabel list.title}}.
         if($eq activityType 'importCard')
@@ -121,7 +122,7 @@ template(name="cardActivities")
               +viewer
                 = comment.text
             span(title=createdAt).activity-meta {{ moment createdAt }}
-              if ($eq currentUser._id comment.userId)
+              if currentUser.isBoardAdmin
                 = ' - '
                 a.js-open-inlined-form {{_ "edit"}}
                 = ' - '
@@ -132,11 +133,12 @@ template(name="cardActivities")
 
 template(name="othercardActivities")
   each currentCard.activities
-    if($eq activityType 'addComment')
-      .activity
-        +userAvatar(userId=user._id)
-        p.activity-desc
-          +memberName(user=user)
+    .activity
+      +userAvatar(userId=user._id)
+      p.activity-desc
+        +memberName(user=user)
+  
+        if($eq activityType 'addComment')
           if($eq activityType 'addComment')
             +inlinedForm(classNames='js-edit-comment')
               +editor(autofocus=true)

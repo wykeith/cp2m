@@ -1,16 +1,16 @@
 template(name='list')
-    if currentUser.isBoardMember
-      .list.js-list(id="js-list-{{_id}}")
-        +listHeader
-        +listBody
-    else
-      .publiclist.js-list(id="js-list-{{_id}}")
-        if currentUser
+  if currentUser.isBoardMember
+    .list.js-list(id="js-list-{{_id}}")
+      +listHeader
+      +listBody
+  else
+    .publiclist.js-list(id="js-list-{{_id}}")
+      if currentUser
+        +publiclistHeader
+        +publiclistBody
+      else
+        if this.sort
+          .span
+        else
           +publiclistHeader
           +publiclistBody
-        else
-          if this.sort
-            .span
-          else
-            +publiclistHeader
-            +publiclistBody
