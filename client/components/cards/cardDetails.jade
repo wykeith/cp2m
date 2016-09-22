@@ -71,7 +71,7 @@ template(name="cardDetails")
 
     hr
     h2 {{ _ 'activity'}}
-    if currentUser.isBoardMember
+    if currentUser
       +commentForm
     if isLoaded.get
       +activities(card=this mode="card")

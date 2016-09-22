@@ -7,6 +7,11 @@ template(name="activities")
         +boardActivities
       else
         +cardActivities
+    else
+      if $eq mode "board"
+        .span
+      else
+        +othercardActivities
 
 template(name="boardActivities")
   each currentBoard.activities
@@ -14,7 +19,7 @@ template(name="boardActivities")
       +userAvatar(userId=user._id)
       p.activity-desc
         +memberName(user=user)
-
+        
         if($eq activityType 'addAttachment')
           | {{{_ 'activity-attached' attachmentLink cardLink}}}.
 
@@ -80,6 +85,7 @@ template(name="cardActivities")
       +userAvatar(userId=user._id)
       p.activity-desc
         +memberName(user=user)
+      
         if($eq activityType 'createCard')
           | {{_ 'activity-added' cardLabel list.title}}.
         if($eq activityType 'importCard')
@@ -116,7 +122,7 @@ template(name="cardActivities")
               +viewer
                 = comment.text
             span(title=createdAt).activity-meta {{ moment createdAt }}
-              if ($eq currentUser._id comment.userId)
+              if currentUser.isBoardAdmin
                 = ' - '
                 a.js-open-inlined-form {{_ "edit"}}
                 = ' - '
@@ -124,3 +130,27 @@ template(name="cardActivities")
 
         else
           span(title=createdAt).activity-meta {{ moment createdAt }}
+
+template(name="othercardActivities")
+  each currentCard.activities
+    if($eq activityType 'addComment')
+      .activity
+        +userAvatar(userId=user._id)
+        p.activity-desc
+          +memberName(user=user)
+          if($eq activityType 'addComment')
+            +inlinedForm(classNames='js-edit-comment')
+              +editor(autofocus=true)
+                = comment.text
+              .edit-controls
+                button.primary(type="submit") {{_ 'edit'}}
+            else
+              .activity-comment
+                +viewer
+                  = comment.text
+              span(title=createdAt).activity-meta {{ moment createdAt }}
+                if ($eq currentUser._id comment.userId)
+                  = ' - '
+                  a.js-delete-comment {{_ "delete"}}
+          else
+            span(title=createdAt).activity-meta {{ moment createdAt }}

@@ -107,7 +107,7 @@ Boards.helpers({
   },
 
   isPublic() {
-    return this.permission === 'public';
+    return this.permission == 'public';
   },
 
   lists() {

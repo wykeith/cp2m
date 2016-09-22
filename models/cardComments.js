@@ -25,13 +25,17 @@ CardComments.attachSchema(new SimpleSchema({
 
 CardComments.allow({
   insert(userId, doc) {
-    return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
+    return true;
+    // Allow any Tom Dick Harry to insert comments
+    //return allowIsBoardMember(userId, Boards.findOne(doc.boardId));
   },
   update(userId, doc) {
-    return userId === doc.userId;
+    return true;
+    //return userId === doc.userId;
   },
   remove(userId, doc) {
-    return userId === doc.userId;
+    return true;
+    //return userId === doc.userId;
   },
   fetch: ['userId', 'boardId'],
 });
