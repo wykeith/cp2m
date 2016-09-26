@@ -17,8 +17,8 @@ Meteor.publish('boards', function() {
     archived: false,
     $or: [
       {
-        _id: { $in: starredBoards },
-        permission: 'public',
+        //_id: { $in: starredBoards },
+        permission: 'public'
       },
       { members: { $elemMatch: { userId: this.userId, isActive: true }}},
     ],

@@ -1,10 +1,7 @@
 BlazeComponent.extendComponent({
   boards() {
     return Boards.find({
-      $or: [
-          { archived: false},
-          { permission: 'public' }
-      ]
+      archived: false
     }, {
     sort: ['title'],
     });
