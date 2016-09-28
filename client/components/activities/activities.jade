@@ -17,6 +17,7 @@ template(name="boardActivities")
   each currentBoard.activities
     .activity
       +userAvatar(userId=user._id)
+      console.log(user._id)  
       p.activity-desc
         +memberName(user=user)
         
