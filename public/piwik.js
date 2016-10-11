@@ -2,7 +2,7 @@ var _paq = _paq || [];
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
 (function() {
-var u="//piwiki.cp2m.cloudns.cc/";
+var u="//piwik.cp2m.cloudns.cc/";
 _paq.push(['setTrackerUrl', u+'piwik.php']);
 _paq.push(['setSiteId', 2]);
 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
