@@ -9,6 +9,7 @@ head
   link(rel="shortcut icon" href="/cp2m-favicon.png")
 
 template(name="feedbackform")
+  script.piwik(src="{{pathFor '/piwik.js'}}")
   section.auth-layout
     section.auth-dialog
       img.at-cp2m-logo(src="{{pathFor '/big_cp2m.png'}}" alt="CP2M")
